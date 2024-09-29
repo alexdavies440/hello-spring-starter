@@ -3,13 +3,15 @@ package org.launchcode.hellospring.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
+
 @Controller
 public class HelloController {
-//    @GetMapping("hello")
-//    @ResponseBody
-//    public String hello() {
-//        return "Hello, Spring";
-//    }
+    @GetMapping()
+    @ResponseBody
+    public String hello() {
+        return "root";
+    }
 
     @GetMapping("goodbye")
     @ResponseBody
@@ -28,4 +30,18 @@ public class HelloController {
    public String helloWithQueryParam(@RequestParam String name) {
         return "Hello, " + name + "!";
    }
+
+    @GetMapping("hello/{name}")
+    @ResponseBody
+
+    public String helloWithPathParam(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
+
+    // If no name given, redirects to root
+    @GetMapping("hello/")
+    public String redirect() {
+        return "redirect:/";
+    }
+
 }
