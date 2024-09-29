@@ -7,15 +7,16 @@ import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 
 @Controller
 @ResponseBody
-@RequestMapping("hello")
+@RequestMapping("form")
 public class HelloController {
-    @GetMapping("form")
+
+    @GetMapping
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action='hello' method='post'>" +
+                "<form action='form' method='post'>" +
                 "<label>Name: " +
-                "<input type='text' name='name'>" +
+                "<input type='text' name='user'>" +
                 "</label>" +
                 //"<label>Language: " +
                 "<select name='language'>" +
@@ -25,10 +26,15 @@ public class HelloController {
                 "<option value='welsh'>Welsh</option>" +
                 "<option value='italian'>Italian</option>" +
                 //"</label>" +
-                "<input type='submit' value='Greet me!'" +
+                "<input type='submit' value='Greet me!'>" +
                 "</form>" +
                 "</body>" +
                 "</html>";
+    }
+
+    @PostMapping
+    public static String createMessage(String user) {
+        return "Hello, " + user + "!";
     }
 
 }
