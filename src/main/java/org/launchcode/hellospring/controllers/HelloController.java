@@ -1,18 +1,15 @@
 package org.launchcode.hellospring.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
-    @GetMapping("hello")
-    @ResponseBody
-    public String hello() {
-        return "Hello, Spring";
-    }
+//    @GetMapping("hello")
+//    @ResponseBody
+//    public String hello() {
+//        return "Hello, Spring";
+//    }
 
     @GetMapping("goodbye")
     @ResponseBody
@@ -25,4 +22,10 @@ public class HelloController {
     public String hellogoodbye() {
         return "Hello Spring. Goodbye Spring.";
     }
+
+   @GetMapping("hello")
+   @ResponseBody
+   public String helloWithQueryParam(@RequestParam String name) {
+        return "Hello, " + name + "!";
+   }
 }
