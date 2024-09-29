@@ -25,7 +25,7 @@ public class HelloController {
         return "Hello Spring. Goodbye Spring.";
     }
 
-   @GetMapping("hello")
+   @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value="hello")
    @ResponseBody
    public String helloWithQueryParam(@RequestParam String name) {
         return "Hello, " + name + "!";
@@ -42,6 +42,19 @@ public class HelloController {
     @GetMapping("hello/")
     public String redirect() {
         return "redirect:/";
+    }
+
+    @GetMapping("form")
+    @ResponseBody
+    public String hellowForm() {
+        return "<html>" +
+                "<body>" +
+                "<form action='hello' method='post'>" +
+                "<input type='text' name ='name'>" + //submit request to /hello
+                "<input type='submit' value='greet me'>" +
+                "</form>" +
+                "</body>" +
+                "</html>";
     }
 
 }
