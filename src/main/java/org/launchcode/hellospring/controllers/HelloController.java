@@ -35,27 +35,28 @@ public class HelloController {
 
     @PostMapping
     public static String createMessage(String user, String lang) {
+        String greeting = "";
+        if (user == "" || user == null) {
+            user = "World";
+        }
 
         if (lang.equals("english")) {
-            return "Hello, " + user + "!";
+            greeting = "Hello";
         }
         else if (lang.equals("spanish")) {
-            return "Hola, " + user + "!";
+            greeting = "Hola";
         }
         else if (lang.equals("french")) {
-            return "Bonjour, " + user + "!";
+            greeting = "Bonjour";
         }
         else if (lang.equals("welsh")) {
-            return "Helo, " + user + "!";
+            greeting = "Helo";
         }
         else if (lang.equals("italian")) {
-            return "Ciao, " + user + "!";
-        }
-        else {
-            return "Please select a language";
+            greeting = "Ciao";
         }
 
-
+        return greeting + ", " + user + "!";
     }
 
 }
